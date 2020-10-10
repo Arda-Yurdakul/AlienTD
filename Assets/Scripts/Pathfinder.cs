@@ -9,6 +9,7 @@ public class Pathfinder : MonoBehaviour
     Dictionary<Vector3Int, Waypoint> grid = new Dictionary<Vector3Int, Waypoint>();
     Queue<Waypoint> waypoints = new Queue<Waypoint>();
     Vector3Int[] neighbors = { new Vector3Int(0,0,1), new Vector3Int(1, 0, 0), new Vector3Int(0, 0,-1 ), new Vector3Int(-1, 0, 0) };
+    List<Waypoint> shortestPath = new List<Waypoint>();
 
 
     [SerializeField]List<Waypoint> startEnd;
@@ -17,8 +18,6 @@ public class Pathfinder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadBlocks();
-        Pathfind();
         
     }
 
@@ -26,6 +25,13 @@ public class Pathfinder : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public List<Waypoint> GetPath()
+    {
+        LoadBlocks();
+        Pathfind();
+        return shortestPath;
     }
 
     private void Pathfind()
@@ -38,10 +44,23 @@ public class Pathfinder : MonoBehaviour
             searchCenter.isExplored = true;
             StopIfEndFound(searchCenter);
             ExploreNeighbors(searchCenter);
-
         }
 
+        Waypoint currentWaypoint = startEnd[1];
+        while(currentWaypoint != startEnd[0])
+        {
+            shortestPath.Add(currentWaypoint);
+            if(currentWaypoint != startEnd[1])
+                currentWaypoint.transform.Find("Quad0").GetComponent<MeshRenderer>().material.color = Color.blue;
+            currentWaypoint = currentWaypoint.exploredFrom;
+        }
+
+        shortestPath.Add(startEnd[0]);
+        shortestPath.Reverse();
+
     }
+
+
 
     private void StopIfEndFound(Waypoint searchCenter)
     {
@@ -78,17 +97,15 @@ public class Pathfinder : MonoBehaviour
                 Waypoint currentBlock = grid[neighbor];
                 if(!currentBlock.isExplored && !waypoints.Contains(currentBlock))
                 {
-                    currentBlock.transform.Find("Quad0").GetComponent<MeshRenderer>().material.color = Color.blue;
                     waypoints.Enqueue(currentBlock);
                     currentBlock.exploredFrom = searchCenter;
-                    Debug.Log("Exploring " + neighbor.ToString());
                 }
                 
 
             }
             catch
             {
-                Debug.Log("No edge found!");
+
             }
         }
     }

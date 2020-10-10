@@ -8,7 +8,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> path;
+    private List<Waypoint> path;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +24,9 @@ public class EnemyBehavior : MonoBehaviour
 
     public IEnumerator FindPath()
     {
+        path = FindObjectOfType<Pathfinder>().GetPath();
         print("Starting patrol..");
-        foreach(GameObject block in path)
+        foreach(Waypoint block in path)
         {
             transform.position = block.transform.position + new Vector3(0,5,0);
             yield return new WaitForSeconds(1.0f);
@@ -33,4 +34,5 @@ public class EnemyBehavior : MonoBehaviour
         print("Patrol finished..");
         
     }
+
 }
