@@ -8,12 +8,12 @@ public class Pathfinder : MonoBehaviour
 {
     Dictionary<Vector3Int, Waypoint> grid = new Dictionary<Vector3Int, Waypoint>();
     Queue<Waypoint> waypoints = new Queue<Waypoint>();
-    Vector3Int[] neighbors = { new Vector3Int(0,0,1), new Vector3Int(1, 0, 0), new Vector3Int(0, 0,-1 ), new Vector3Int(-1, 0, 0) };
-    List<Waypoint> shortestPath = new List<Waypoint>();
-
+    private Vector3Int[] neighbors = { new Vector3Int(0,0,1), new Vector3Int(1, 0, 0), new Vector3Int(0, 0,-1 ), new Vector3Int(-1, 0, 0) };
+    private List<Waypoint> shortestPath = new List<Waypoint>();
+    private bool isRunning = true;
 
     [SerializeField]List<Waypoint> startEnd;
-    private bool isRunning = true;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -100,12 +100,9 @@ public class Pathfinder : MonoBehaviour
                     waypoints.Enqueue(currentBlock);
                     currentBlock.exploredFrom = searchCenter;
                 }
-                
-
             }
             catch
             {
-
             }
         }
     }
