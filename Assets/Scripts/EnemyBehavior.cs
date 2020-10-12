@@ -28,14 +28,11 @@ public class EnemyBehavior : MonoBehaviour
     public IEnumerator FindPath()
     {
         path = FindObjectOfType<Pathfinder>().GetPath();
-        print("Starting patrol..");
         foreach(Waypoint block in path)
         {
             transform.position = block.transform.position;
             yield return new WaitForSeconds(1.0f);
         }
-        print("Patrol finished..");
-        
     }
 
     private void OnParticleCollision(GameObject other)

@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a6f951563ec4c499e7e5b04ff7c951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 10
   explosion: {fileID: 3986326768282056675, guid: d1dbfe132615b1b4d87c96cc203e19a0, type: 3}
   runtimeObjects: {fileID: 0}
 --- !u!54 &537758345

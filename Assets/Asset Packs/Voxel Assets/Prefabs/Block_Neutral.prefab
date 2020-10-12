@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 23272056169610652}
   - component: {fileID: -7437010772085067967}
   - component: {fileID: -3151173307586722647}
+  - component: {fileID: 1842374460}
   m_Layer: 0
   m_Name: Block_Neutral
-  m_TagString: Untagged
+  m_TagString: Neutral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExplored: 0
   exploredFrom: {fileID: 0}
+  turret: {fileID: 3033862751454547753, guid: c1b3a0563d9b605409d89cffb9f4172e, type: 3}
 --- !u!114 &-3151173307586722647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,3 +111,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e167f47bf5ddfb49be05d020f0cc2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1842374460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346198445039670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 24.990902, z: 20}
+  m_Center: {x: 0, y: 12.495451, z: 0}
