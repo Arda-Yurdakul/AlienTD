@@ -9,6 +9,9 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     private List<Waypoint> path;
+    [SerializeField] [Range(1,100)] private int health;
+    [SerializeField] private GameObject explosion;
+    public Transform runtimeObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +31,22 @@ public class EnemyBehavior : MonoBehaviour
         print("Starting patrol..");
         foreach(Waypoint block in path)
         {
-            transform.position = block.transform.position + new Vector3(0,5,0);
+            transform.position = block.transform.position;
             yield return new WaitForSeconds(1.0f);
         }
         print("Patrol finished..");
         
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        health--;
+        if(health <= 0)
+        {
+            GameObject explosionParticle = Instantiate(explosion, transform.position, Quaternion.identity);
+            explosionParticle.transform.parent = runtimeObjects;
+            Destroy(this.gameObject);
+        }
     }
 
 }

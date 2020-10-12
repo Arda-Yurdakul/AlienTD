@@ -18,7 +18,8 @@ public class Pathfinder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        LoadBlocks();
+        Pathfind();
     }
 
     // Update is called once per frame
@@ -29,8 +30,7 @@ public class Pathfinder : MonoBehaviour
 
     public List<Waypoint> GetPath()
     {
-        LoadBlocks();
-        Pathfind();
+
         return shortestPath;
     }
 

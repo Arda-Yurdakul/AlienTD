@@ -36,8 +36,8 @@ public class CubeEditor : MonoBehaviour
     {
         Vector3 snapPos = waypoint.GetGridPos();
         string labelText = snapPos.x  + "," + snapPos.z ;
-        textMesh = GetComponentInChildren<TextMesh>();
-        textMesh.text = labelText;
+        //textMesh = GetComponentInChildren<TextMesh>();              //todo MAYBE UNCOMMENT IN THE FUTURE
+        //textMesh.text = labelText;
         name = "Cube (" + labelText + ")";
     }
 }
