@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    private bool hasTower;
+    
     private const int snapSize = 10;
+    public bool hasTower;
     public bool isExplored;
     public Waypoint exploredFrom;
     [Header("Turret Settings")]
     [SerializeField] private GameObject turret;
-    [SerializeField] private int maxTurrets;
+
 
     [Header("Cursor Images")]
     [SerializeField] private Texture2D buildArrow;
     [SerializeField] private Texture2D regularArrow;
 
-    static Queue<GameObject> turretBuffer = new Queue<GameObject>();
 
 
     // Start is called before the first frame update
@@ -51,7 +51,7 @@ public class Waypoint : MonoBehaviour
         {
             Cursor.SetCursor(buildArrow, Vector2.zero, CursorMode.ForceSoftware);
             if(Input.GetMouseButtonDown(0))
-                HandleTurretSpawn();
+                FindObjectOfType<TurretSpawner>().HandleTurretSpawn(this);
         }
 
         else
@@ -65,17 +65,4 @@ public class Waypoint : MonoBehaviour
         Cursor.SetCursor(regularArrow, Vector2.zero, CursorMode.ForceSoftware);
     }
 
-    public void HandleTurretSpawn()
-    {
-        GameObject newTurret = Instantiate(turret, transform.position + new Vector3(0, 10, 0), Quaternion.identity);
-        turretBuffer.Enqueue(newTurret);
-        print(turretBuffer);
-        if (turretBuffer.Count >= maxTurrets)
-        {
-            print("Yo");
-            GameObject oldestTurret = turretBuffer.Dequeue();
-            Destroy(oldestTurret);
-        }
-        hasTower = true;
-    }
 }
