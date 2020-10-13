@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 806826589937462578}
   - component: {fileID: 5169228624465463002}
   m_Layer: 0
-  m_Name: Cube (5,-1)
+  m_Name: NeutralCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExplored: 0
   exploredFrom: {fileID: 0}
+  turret: {fileID: 0}
 --- !u!114 &5169228624465463002
 MonoBehaviour:
   m_ObjectHideFlags: 0

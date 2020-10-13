@@ -9,7 +9,11 @@ public class Waypoint : MonoBehaviour
     public bool isExplored;
     public Waypoint exploredFrom;
     [SerializeField] private GameObject turret;
-     
+
+    [SerializeField] private Texture2D buildArrow;
+    [SerializeField] private Texture2D regularArrow;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,10 +42,24 @@ public class Waypoint : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && this.gameObject.CompareTag("Neutral") && !hasTower)
+        if (this.gameObject.CompareTag("Neutral") && !hasTower)
         {
-            GameObject newTurret = Instantiate(turret, transform.position + new Vector3(0, 10, 0), Quaternion.identity);
-            hasTower = true;
+            Cursor.SetCursor(buildArrow, Vector2.zero, CursorMode.ForceSoftware);
+            if(Input.GetMouseButtonDown(0))
+            {
+                GameObject newTurret = Instantiate(turret, transform.position + new Vector3(0, 10, 0), Quaternion.identity);
+                hasTower = true;
+            }           
         }
+
+        else
+        {
+            Cursor.SetCursor(regularArrow, Vector2.zero, CursorMode.ForceSoftware);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        Cursor.SetCursor(regularArrow, Vector2.zero, CursorMode.ForceSoftware);
     }
 }

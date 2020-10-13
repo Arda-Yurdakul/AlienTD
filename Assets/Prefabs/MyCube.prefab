@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 381199408089469254}
   - component: {fileID: 420183891454925839}
   - component: {fileID: 4918378830574261767}
+  - component: {fileID: 7600032152976868224}
   m_Layer: 0
   m_Name: MyCube
   m_TagString: Untagged
@@ -60,6 +61,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExplored: 0
   exploredFrom: {fileID: 0}
+  turret: {fileID: 0}
+  buildArrow: {fileID: 2800000, guid: f2e59480af813ad42af2eba175095158, type: 3}
+  regularArrow: {fileID: 2800000, guid: 44a99ee545fd8ba46a452b12c1f9378b, type: 3}
+--- !u!65 &7600032152976868224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381199408089469255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.693871, y: 10.487684, z: 9.146497}
+  m_Center: {x: 0.038845062, y: -4.743842, z: -0.124616146}
 --- !u!1 &381199409845996370
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +255,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420183891735413900}
-  m_Text: 5,0
+  m_Text: 10,1
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
