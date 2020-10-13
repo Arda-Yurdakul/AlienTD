@@ -99,7 +99,9 @@ MonoBehaviour:
   isExplored: 0
   exploredFrom: {fileID: 0}
   turret: {fileID: 3033862751454547753, guid: c1b3a0563d9b605409d89cffb9f4172e, type: 3}
+  maxTurrets: 4
   buildArrow: {fileID: 2800000, guid: f2e59480af813ad42af2eba175095158, type: 3}
+  regularArrow: {fileID: 2800000, guid: 44a99ee545fd8ba46a452b12c1f9378b, type: 3}
 --- !u!114 &-3151173307586722647
 MonoBehaviour:
   m_ObjectHideFlags: 0
