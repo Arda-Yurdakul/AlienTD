@@ -11,6 +11,7 @@ public class EnemyBehavior : MonoBehaviour
     private List<Waypoint> path;
     [SerializeField] [Range(1,100)] private int health;
     [SerializeField] private GameObject explosion;
+    [SerializeField] private GameObject hitEffect;
     public Transform runtimeObjects;
 
     // Start is called before the first frame update
@@ -43,6 +44,10 @@ public class EnemyBehavior : MonoBehaviour
             GameObject explosionParticle = Instantiate(explosion, transform.position, Quaternion.identity);
             explosionParticle.transform.parent = runtimeObjects;
             Destroy(this.gameObject);
+        }
+        else
+        {
+           GameObject hitParticle = Instantiate(hitEffect, transform.position, Quaternion.identity);
         }
     }
 

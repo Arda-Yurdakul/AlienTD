@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  explosion: {fileID: 3986326768282056675, guid: d1dbfe132615b1b4d87c96cc203e19a0, type: 3}
+  explosion: {fileID: 1929956291960174, guid: 1a51bfda454239a41afb7dee687c6ac0, type: 3}
+  hitEffect: {fileID: 1505610324796538, guid: dcf9cd10c07cf0c49863969befadb243, type: 3}
   runtimeObjects: {fileID: 0}
 --- !u!54 &537758345
 Rigidbody:
