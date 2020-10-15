@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a6f951563ec4c499e7e5b04ff7c951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 8
+  health: 9
+  damage: 1
   explosion: {fileID: 1929956291960174, guid: 1a51bfda454239a41afb7dee687c6ac0, type: 3}
   hitEffect: {fileID: 1505610324796538, guid: dcf9cd10c07cf0c49863969befadb243, type: 3}
+  selfDestruct: {fileID: 1505610324796538, guid: 2e398d5241beb8b459eab49e99b73970, type: 3}
   runtimeObjects: {fileID: 0}
 --- !u!54 &2064477933351089028
 Rigidbody:

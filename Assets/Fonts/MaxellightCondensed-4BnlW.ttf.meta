@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a65f1b41c8daa3e41952727c40f54f1d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Maxellight
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 163f22b4769d3604fba96644d6be50f7, type: 3}
+  - {fileID: 12800000, guid: a39371551792dcf4ead30a3799b5a690, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [Header ("Wave Settings")]
-    [SerializeField] private int waveLength;
-    [SerializeField] [Tooltip("In Seconds")] [Range(1.0f, 10.0f)] private float spawnDelay;
+    [Header("Wave Settings")]
+    [SerializeField] private int[] waveLengths;
+    [SerializeField] [Tooltip("In Seconds")] private float[] spawnDelays;
+    [SerializeField] [Tooltip("In Seconds")] private float downTime;
+    
 
+    [Header("Enemy")]
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject bossPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +29,32 @@ public class Spawner : MonoBehaviour
     private IEnumerator SpawnEnemies()
     {
         int spawned = 0;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(3.0f);
 
-        while(spawned < waveLength)
+        for(int i=0; i<waveLengths.Length; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-            enemy.transform.parent = this.transform;
-            spawned++;
-            yield return new WaitForSeconds(spawnDelay);
+            while (spawned < waveLengths[i])
+            {
+                GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+                enemy.transform.parent = this.transform;
+                spawned++;
+                yield return new WaitForSeconds(spawnDelays[i]);
 
+            }
+
+            if(i!=waveLengths.Length -1)
+            {
+                FindObjectOfType<WaveHandler>().HandleWave(i);
+                spawned = 0;
+                yield return new WaitForSeconds(downTime);
+            }
+            
+            
         }
+
+        FindObjectOfType<WaveHandler>().HandleWave(waveLengths.Length);
+        GameObject boss = Instantiate(bossPrefab, transform.position, Quaternion.identity);
+        boss.transform.parent = this.transform;
+
     }
 }

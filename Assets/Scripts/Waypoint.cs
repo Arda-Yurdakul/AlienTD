@@ -51,7 +51,7 @@ public class Waypoint : MonoBehaviour
         {
             Cursor.SetCursor(buildArrow, Vector2.zero, CursorMode.ForceSoftware);
             if(Input.GetMouseButtonDown(0))
-                FindObjectOfType<TurretSpawner>().HandleTurretSpawn(this);
+                FindObjectOfType<WaveHandler>().HandleTurretSpawn(this);
         }
 
         else

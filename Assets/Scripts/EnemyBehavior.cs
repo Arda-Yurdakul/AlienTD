@@ -15,10 +15,13 @@ public class EnemyBehavior : MonoBehaviour
     private Waypoint nextBlock;
     private float moveSpeed;
 
+
     [SerializeField] [Range(1,100)] private int health;
+    [SerializeField] [Range(1, 10)] private int damage;
     [SerializeField] private GameObject explosion;
     [SerializeField] private GameObject hitEffect;
-   
+    [SerializeField] private GameObject selfDestruct;
+
 
     public Transform runtimeObjects;
    
@@ -48,6 +51,10 @@ public class EnemyBehavior : MonoBehaviour
             transform.position = block.transform.position;
             yield return new WaitForSeconds(1.0f);
         }
+
+        GameObject detonation = Instantiate(selfDestruct, transform.position + new Vector3(0,5,0), Quaternion.identity);
+        Destroy(this.gameObject);
+        HealthManager.Instance.DecrementHealth(damage);
     }
 
     private void OnParticleCollision(GameObject other)
@@ -58,11 +65,15 @@ public class EnemyBehavior : MonoBehaviour
             GameObject explosionParticle = Instantiate(explosion, transform.position, Quaternion.identity);
             explosionParticle.transform.parent = runtimeObjects;
             Destroy(this.gameObject);
+            if (this.gameObject.CompareTag("Boss"))
+                FindObjectOfType<WaveHandler>().HandleWave(4);
         }
         else
         {
            GameObject hitParticle = Instantiate(hitEffect, transform.position, Quaternion.identity);
         }
     }
+
+
 
 }
